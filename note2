@@ -1,0 +1,327 @@
+<!-- 2 -->
+
+<form method="POST" action="#">
+    {% csrf_token %}
+   <div class="form-group">
+        <!-- {{ form|crispy }} -->
+
+
+    <div class="row py-5">
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >الرقم الوظيفي</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color ;">{{ form.id_number }}</p>         
+            </div>
+        </div>
+       
+
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="contentHeader" style="font-size:medium;" >الاسم</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.name }}</p> 
+            </div>
+        </div>
+      
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >المسمي الوظيفي</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.position }}</p> 
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >تاريخ التعيين</p>
+                <div class="fontCairo size20 contentHeader border rounded">
+                    {% render_field form.hiring_date type="date" placeholder='Example: 2020-01-01' %}        
+                </div>                                   
+            </div>
+        </div>
+         
+        <!-- First -->
+
+
+
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >رقم الهوية</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.national_id }}</p> 
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >نوع السيارة</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.car_kind }}</p>                         
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >رقم اللوحة</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.car_number }}</p> 
+            </div>
+        </div> 
+
+
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >رقم الموقف</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.Parking_id_number }}</p>         
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <p class="fontCairo size20 contentHeader" style="font-size:medium;" >تاريخ بداية الاجازة</p>
+                    <div class="fontCairo size20 contentHeader border rounded">
+                    {% render_field form.vacation_start_date type="date" placeholder='Example: 2020-01-01' %}        
+                    </div>                                     
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <p class="fontCairo size20 contentHeader" style="font-size:medium;" >العودة من الاجازة</p>
+                    <div class="fontCairo size20 contentHeader border rounded">
+                        {% render_field form.vacation_back_date type="date" placeholder='Example: 2020-01-01' %}
+                    </div>
+                </div>
+            </div> 
+
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >حالة الموظف</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.status }}</p>                     
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >الدور</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.floor_number }}</p>                                                  
+            </div>
+        </div>                            
+        <div class="col-md-6">
+            <div class="mb-3">
+                <p class="fontCairo size20 contentHeader" style="font-size:medium;" >رقم البطاقة</p>
+                <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.employee_temprary }}</p>                                                          
+            </div>
+        </div>                            
+        <div class="col-md-12">
+            <div class="mb-3">
+                <div class="form-group">
+                    <label for="financialNotes" class="form-label fontCairo size16 labelInput py-2">ملاحظات الادارة </label>
+                    <p class="fontCairo size20 contentHeader border rounded" style="font-size:medium backround color;">{{ form.notes }}</p>                           
+                
+                    <!-- <p class="notes-placeholder"></p> -->
+                </div>
+            </div>
+          
+            <button type="submit" class="btn btn-primary col-lg-3" style="color: black; background-color: #ffc107; border-color: #ffc107;">أضافة</button>
+</form>
+
+
+
+<!--  -->
+
+
+{% extends "blog/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+<!-- {{ form|crispy }} -->
+<!-- {{ form2|crispy }} -->
+
+
+
+<section>
+    <form  method="POST">
+        {% csrf_token %}
+        {{ form.name_W }}
+        <input type="submit" name="submit">
+    </form>
+    
+
+</section>
+
+<section>
+    <form  method="POST">
+        {% csrf_token %}
+        <hr>
+        {{ form2 }}
+        <input type="submit" name="submit">
+    </form>
+</section>
+
+
+{% endblock content %}
+
+
+
+<!--  -->
+
+
+
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+
+<div class="container ">
+        <h1>Employee Dashboard</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card fontCairo">
+                    <div class="card-header">بيانات الموظف</div>
+                    <div class="card-body">
+                        <p class="tableMargin7  fontCairo ">{{ employee.name }}أسم الموظف</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Additional Information</div>
+                    <div class="card-body">
+                        <p>Position: Manager</p>
+                        <p>National ID: 67890</p>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+    </div>
+
+    
+<body>
+
+    <div class="container-fluid" >
+        <div class="row">
+        
+            <div class="col-md-10">
+
+                <div class="container" >
+                    
+                  
+                    <div class="row p-2  text-center clientDataEntry fontCairo size18">
+                        <p class="m-1">تحديث بيانات البنوك</p>
+                    </div>
+
+                    
+                    <form action="" class="needs-validation" novalidate  id="dataForm"> 
+                    <div class="row p-3" id="elementsContainer">
+                        
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="table-responsive px-3" > 
+                        <table class="table table-responsive  mt-3 coloredTable" >
+                            <thead class="coloredTableThead" >
+                             
+                    
+                            
+                            </thead>
+                            <tbody class="fontCairo">
+
+                                <tr class="size12 oddRow table60">
+                                    <th class="text-center" scope="row">
+                                        <p  class="tableMargin7">
+                                            بنك الراجحي
+                                        </p>
+                                    </th>
+                                    <td class="text-center">
+                                        <p class="tableMargin7">
+                                            مدفوعات انترنت
+                                        </p>
+                                    </td>
+                                 
+        
+                               
+        
+                                </tr>
+                                
+                               
+  
+                                    
+        
+                                </tr>
+                               
+                                 
+                                    
+                               
+  
+                                    
+        
+                            
+                            
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="row p-3 m-0">
+                        <div class="col-2"></div>
+                        <div class="col-lg-4">
+                        <button type="submit" form="dataForm"  class="fontCairo size18 addBtn submitBtn p-2">
+                            اضافة
+                        </button>
+                        </div>
+                        <div class="col-lg-4 mt-3 m-sm-0">
+                            <button type="button"  class="fontCairo size18 btnCancelGray submitBtn p-2">
+                                الغاء
+                            </button>
+                        </div>
+                        <div class="col-2"></div>
+            
+                    </div> 
+                    </div>
+                    </form>
+                 
+                    </div>
+                  </div>
+              
+            </div>
+
+
+
+           
+        </div>
+    </div>
+
+
+    
+
+</body>
+
+
+{% endblock %}
+
+
+
+
+<script>
+    const form = document.getElementById('myForm');
+    const choiceRadios = document.getElementsByName('choice');
+    const additionalFields = document.getElementById('additionalFields');
+
+    for (const radio of choiceRadios) {
+        radio.addEventListener('change', function () {
+            console.log(this.value)
+            if(this.value=='first'){
+                $('#additionalFields').addClass('d-none')
+                $('#additionalFields2').removeClass('d-none')
+            }else{
+                $('#additionalFields2').addClass('d-none')
+                $('#additionalFields').removeClass('d-none')
+            }
+            // additionalFields.style.display = this.value === 'second'
+            // ? 'block' : 'none';
+        });
+    }
+
+    form.addEventListener('submit', function (event) {
+        if (choiceRadios[1].checked && (!input1.value || !input2.value)) {
+            event.preventDefault(); // Prevent form submission
+            alert('Please fill in the required fields for the second option.');
+        }
+    });
+
+</script>
